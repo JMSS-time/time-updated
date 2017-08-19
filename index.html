@@ -170,6 +170,15 @@ function calculateNextPeriod()
 	
 		//Reset the title
 		document.getElementById('titleText').innerHTML = "Timetable";
+		
+		//Tomorrow 1 AM
+		tomorrow = new Date();
+		tomorrow.setHours(25);
+		tomorrow.setMinutes(0);
+		tomorrow.setSeconds(0);
+		
+		// Check periods tomorrow
+		setTimeout(calculateNextPeriod, tomorrow - today);
 	}
 	
 	else
