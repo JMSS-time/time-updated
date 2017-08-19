@@ -65,7 +65,7 @@ function calculateNextPeriod()
 		new schoolPeriod("Period 5", "14:15", "15:15")
 	];
 	
-	//Friday Week B
+	// Friday Week B
 	var periodsType4 =
 	[
 		new schoolPeriod("Mentor", "8:30", "8:45"),
@@ -152,7 +152,7 @@ function calculateNextPeriod()
 					// The first time for a period has already been intialized
 					firstRun = false;
 					
-					//Set the label of the time, depending if the period starts or ends
+					// Set the label of the time, depending if the period starts or ends
 					textLabel = "Until " + periods[i].title + (j ? " ends" : " starts");
 				}
 			}
@@ -168,10 +168,10 @@ function calculateNextPeriod()
 		// Clear the coutdown label
 		document.getElementById('timeLeft').innerHTML = "Relax";
 	
-		//Reset the title
+		// Reset the title
 		document.getElementById('titleText').innerHTML = "Timetable";
 		
-		//Tomorrow 1 AM
+		// Tomorrow 1 AM
 		tomorrow = new Date();
 		tomorrow.setHours(25);
 		tomorrow.setMinutes(0);
@@ -204,12 +204,12 @@ function calculateTime(periodTime)
 	// Time until the selected time is reached in seconds
 	var timeLeft = (periodTime - today)/1000;
 	
-	//Format the time into hours, minutes and seconds
+	// Format the time into hours, minutes and seconds
 	var h = Math.floor(timeLeft/3600);
 	var m = Math.floor(timeLeft/60)%60;
 	var s = Math.floor(timeLeft%60);
 	
-	//Make sure the numbers are always two digits
+	// Make sure the numbers are always two digits
 	m = formatTime(m);
 	s = formatTime(s);
 	
@@ -219,19 +219,19 @@ function calculateTime(periodTime)
 	// Display the countdown
 	document.getElementById('timeLeft').innerHTML = timeFormatted;
 	
-	//Set the title to the countdown
+	// Set the title to the countdown
 	document.getElementById('titleText').innerHTML = timeFormatted;
 		
 	// Has the time been reached?
 	if (timeLeft > 0)
 	{
-		//Repeat the calculations to update the countdown
+		// Repeat the calculations to update the countdown
 		setTimeout(calculateTime.bind(periodTime, periodTime), 500);
 	}
 	
 	else
 	{
-		//The time has passed, find the new period time
+		// The time has passed, find the new period time
 		calculateNextPeriod();
 	}
 }
