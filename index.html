@@ -231,6 +231,18 @@ function calculateTime(periodTime)
 	
 	else
 	{
+		// Get the label for the period
+		var timeLabel = document.getElementById('timeLabel').innerHTML;
+		
+		// Extract the period name
+		var periodTitle = timeLabel.replace("Until ", "").replace(" starts", "").replace(" ends", "");
+		
+		// See if the period starts or ends
+		var description = timeLabel.includes(" starts") ? " has started" : " has ended";
+		
+		//Show notification
+		spawnNotification("", "./logo.png", periodTitle + description);
+		
 		// The time has passed, find the new period time
 		calculateNextPeriod();
 	}
@@ -240,6 +252,26 @@ function calculateTime(periodTime)
 function formatTime(i)
 {
 	return i < 10 ? "0" + i : i;
+}
+
+// Request notification permissions
+function requestNotificationPermissions()
+{
+	Notification.requestPermission().then(function(result)
+	{
+	  console.log(result);
+	});
+}
+
+// Show a notification
+function spawnNotification(theBody,theIcon,theTitle)
+{
+  var options =
+  {
+      body: theBody,
+      icon: theIcon
+  }
+  var n = new Notification(theTitle,options);
 }
 
 // Get week number
@@ -260,18 +292,18 @@ body, html {height: 100%}
 }
 </style>
 </head>
-<body onload="calculateNextPeriod()">
+<body onload="requestNotificationPermissions();calculateNextPeriod();">
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-topleft w3-padding-large w3-xlarge">
   <img src="./logo.png" alt="JMSS" style="width:50px;height:50px;"> 
   </div>
   <div class="w3-display-middle">
     <h1 class="w3-jumbo w3-animate-top" id="timeLeft"></h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <hr class="w3-border-grey" style="margin:auto;width:170px">
     <p class="w3-large w3-center" id = "timeLabel"></p>
   </div>
   <div class="w3-display-bottomleft w3-padding-large">
-    Under construction
+    <a href="https://github.com/JMSS-Unknown/JMSS-Unknown.github.io/issues" target="_blank">Feedback</a>
   </div>
 </div>
 
