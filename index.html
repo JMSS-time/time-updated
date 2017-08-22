@@ -257,10 +257,7 @@ function formatTime(i)
 // Request notification permissions
 function requestNotificationPermissions()
 {
-	Notification.requestPermission().then(function(result)
-	{
-	  console.log(result);
-	});
+	Notification.requestPermission();
 }
 
 // Show a notification
