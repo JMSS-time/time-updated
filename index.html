@@ -263,12 +263,35 @@ function requestNotificationPermissions()
 // Show a notification
 function spawnNotification(theBody,theIcon,theTitle)
 {
-  var options =
-  {
-      body: theBody,
-      icon: theIcon
-  }
-  var n = new Notification(theTitle,options);
+	var options =
+	{
+		body: theBody,
+		icon: theIcon
+	}
+	
+	try
+	{
+		var n = new Notification(theTitle,options);
+	}
+	catch (err)
+	{
+		// Log error to console
+		console.log(err, "Using ServiceWorkerRegistration.showNotification() instead")
+		
+		// new Notification is not supported on the mobile chrome browser
+		// Use ServiceWorkerRegistration.showNotification() instead
+		navigator.serviceWorker.register('sw.js');
+		Notification.requestPermission(function(result)
+		{
+			if (result === 'granted')
+			{
+				navigator.serviceWorker.ready.then(function(registration)
+				{
+					registration.showNotification('Notification with ServiceWorker');
+				});
+			}
+		});
+	}
 }
 
 // Get week number
