@@ -261,7 +261,7 @@ function requestNotificationPermissions()
 }
 
 // Show a notification
-function spawnNotification(theBody,theIcon,theTitle)
+function spawnNotification(theBody, theIcon, theTitle)
 {
 	var options =
 	{
@@ -269,9 +269,10 @@ function spawnNotification(theBody,theIcon,theTitle)
 		icon: theIcon
 	}
 	
+	// Try the send a notification
 	try
 	{
-		var n = new Notification(theTitle,options);
+		var n = new Notification(theTitle, options);
 	}
 	catch (err)
 	{
@@ -287,7 +288,7 @@ function spawnNotification(theBody,theIcon,theTitle)
 			{
 				navigator.serviceWorker.ready.then(function(registration)
 				{
-					registration.showNotification('Notification with ServiceWorker');
+					registration.showNotification(theTitle, options);
 				});
 			}
 		});
