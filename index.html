@@ -276,7 +276,7 @@ function spawnNotification(theBody,theIcon,theTitle)
 	catch (err)
 	{
 		// Log error to console
-		console.log(err, "Using ServiceWorkerRegistration.showNotification() instead")
+		console.log(err, "Using ServiceWorkerRegistration.showNotification() instead");
 		
 		// new Notification is not supported on the mobile chrome browser
 		// Use ServiceWorkerRegistration.showNotification() instead
