@@ -341,11 +341,21 @@ function setRandomBackgroundLoad()
 	// Get the image at the index
 	var newImage = images[newImageIndex];
 
-	// Set the background image
-	$('#mainDiv').css('background-image', 'url(' + newImage + ')');
+	// Create a new element to load the image
+	$("<img id='loaderImg' src='"+newImage+"' onload='setRandomBackgroundLoaded(this.src)'/>");
+}
 
-	// Fade back in
-	$("#mainDiv").delay(100).fadeIn(400);
+// Set the background once the image has loaded
+function setRandomBackgroundLoaded(imgUrl)
+{
+		// Set the background
+    $("#mainDiv").css("background-image", "url("+imgUrl+")");
+
+		// Remove the new element
+    $("#loaderImg").remove();
+
+		// Fade back in
+		$("#mainDiv").fadeIn(400);
 }
 
 // Get week number
