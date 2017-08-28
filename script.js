@@ -254,15 +254,33 @@ function formatTime(i)
 	return i < 10 ? "0" + i : i;
 }
 
+// Flag to see if notifications work on the device
+var notificationsSupported = false;
+
 // Request notification permissions
 function requestNotificationPermissions()
 {
-	Notification.requestPermission();
+	try
+	{
+		// Attempt to request permission
+		Notification.requestPermission();
+		notificationsSupported = true;
+	}
+	catch (err)
+	{
+		// Did not work, notifications are not supported
+		console.log(err);
+	}
 }
 
 // Show a notification
 function spawnNotification(theBody, theIcon, theTitle)
 {
+	if (notificationsSupported == false)
+	{
+		return;
+	}
+
 	var options =
 	{
 		body: theBody,
