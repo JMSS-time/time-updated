@@ -359,21 +359,35 @@ function setRandomBackgroundLoad()
 	// Get the image at the index
 	var newImage = images[newImageIndex];
 
-	// Create a new element to load the image
-	$("<img id='loaderImg' src='"+newImage+"' onload='setRandomBackgroundLoaded(this.src)'/>");
-}
+	// Debug information
+	console.log("Attempting to load new image");
 
-// Set the background once the image has loaded
-function setRandomBackgroundLoaded(imgUrl)
-{
+	// Create a new image for the background
+	var backImage = new Image;
+
+	// Set the background once the image has loaded
+	backImage.onload = function()
+	{
+		console.log("Image loaded - new method");
+
 		// Set the background
-    $("#mainDiv").css("background-image", "url("+imgUrl+")");
-
-		// Remove the new element
-    $("#loaderImg").remove();
+		$("#mainDiv").css("background-image", "url("+backImage.src+")");
 
 		// Fade back in
 		$("#mainDiv").fadeIn(400);
+	};
+
+	// Fade back in to avoid a black background
+	backImage.onerror = function()
+	{
+		console.log("Failed to load image");
+
+		// Fade back in
+		$("#mainDiv").fadeIn(400);
+	};
+
+	// Load the image
+	backImage.src = newImage;
 }
 
 // Get week number
