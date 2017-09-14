@@ -90,6 +90,8 @@ function calculateNextPeriod()
 	periodsType4,
 	]];
 
+	//Temporary override for assembly on week A
+	timetable[0][4] = periodsType4;
 
 	// Today
 	var today = new Date();
@@ -359,17 +361,12 @@ function setRandomBackgroundLoad()
 	// Get the image at the index
 	var newImage = images[newImageIndex];
 
-	// Debug information
-	console.log("Attempting to load new image");
-
 	// Create a new image for the background
 	var backImage = new Image;
 
 	// Set the background once the image has loaded
 	backImage.onload = function()
 	{
-		console.log("Image loaded - new method");
-
 		// Set the background
 		$("#mainDiv").css("background-image", "url("+backImage.src+")");
 
@@ -380,8 +377,6 @@ function setRandomBackgroundLoad()
 	// Fade back in to avoid a black background
 	backImage.onerror = function()
 	{
-		console.log("Failed to load image");
-
 		// Fade back in
 		$("#mainDiv").fadeIn(400);
 	};
