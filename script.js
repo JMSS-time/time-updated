@@ -90,8 +90,15 @@ function calculateNextPeriod()
 	periodsType4,
 	]];
 
-	//Temporary override for assembly on week A
-	timetable[0][4] = periodsType4;
+	//Temporary override for the last day of term
+	timetable[1][4] =
+	[
+		new schoolPeriod("Period 1", "8:40", "9:40"),
+		new schoolPeriod("Period 2", "10:05", "11:05"),
+		new schoolPeriod("Period 3", "11:05", "12:05"),
+		new schoolPeriod("Battle of the Bands", "12:55", "14:15"),
+		new schoolPeriod("Mentor", "14:15", "14:30")
+	];
 
 	// Today
 	var today = new Date();
