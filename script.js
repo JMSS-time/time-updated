@@ -90,14 +90,15 @@ function calculateNextPeriod()
 	periodsType4,
 	]];
 
-	//Temporary override for the last day of term
-	timetable[1][4] =
+	//Temporary override for the timetable swap
+	timetable[1][1] =
 	[
 		new schoolPeriod("Period 1", "8:40", "9:40"),
-		new schoolPeriod("Period 2", "10:05", "11:05"),
-		new schoolPeriod("Period 3", "11:05", "12:05"),
-		new schoolPeriod("Battle of the Bands", "12:55", "14:15"),
-		new schoolPeriod("Mentor", "14:15", "14:30")
+		new schoolPeriod("Period 2", "9:40", "10:40"),
+		new schoolPeriod("Mentor", "11:05", "11:20"),
+		new schoolPeriod("House Assembly", "11:20", "12:20"),
+		new schoolPeriod("Period 4", "12:25", "13:25"),
+		new schoolPeriod("Period 5", "14:15", "15:15")
 	];
 
 	// Today
