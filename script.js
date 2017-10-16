@@ -96,9 +96,9 @@ function calculateNextPeriod()
 		new schoolPeriod("Period 1", "8:40", "9:40"),
 		new schoolPeriod("Period 2", "9:40", "10:40"),
 		new schoolPeriod("Mentor", "11:05", "11:20"),
-		new schoolPeriod("House Assembly", "11:20", "12:20"),
+		new schoolPeriod("Period 3", "11:20", "12:20"),
 		new schoolPeriod("Period 4", "12:25", "13:25"),
-		new schoolPeriod("Period 5", "14:15", "15:15")
+		new schoolPeriod("House Assembly", "14:15", "15:15")
 	];
 
 	// Today
