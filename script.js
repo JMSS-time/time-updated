@@ -101,6 +101,23 @@ function calculateNextPeriod()
 		new schoolPeriod("House Assembly", "14:15", "15:15")
 	];
 
+	timetable[1][2] =
+	[
+		new schoolPeriod("Mentor", "8:30", "8:35"),
+		new schoolPeriod("Assembly", "8:35", "10:00"),
+		new schoolPeriod("Period 2", "10:00", "10:45"),
+		new schoolPeriod("Period 3", "11:10", "11:55"),
+		new schoolPeriod("Period 4", "12:00", "12:45"),
+		new schoolPeriod("Co-curricular", "13:30", "15:30")
+	];
+
+	timetable[1][4] =
+	[
+		new schoolPeriod("Assembly", "8:45", "10:15"),
+		new schoolPeriod("Period 2 (Yr 10 & 11)", "10:25", "11:10"),
+		new schoolPeriod("Period 3 (Yr 10 & 11)", "11:35", "12:20")
+	];
+
 	// Today
 	var today = new Date();
 
