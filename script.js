@@ -91,32 +91,7 @@ function calculateNextPeriod()
 	]];
 
 	//Temporary override for the timetable swap
-	timetable[1][1] =
-	[
-		new schoolPeriod("Period 1", "8:40", "9:40"),
-		new schoolPeriod("Period 2", "9:40", "10:40"),
-		new schoolPeriod("Mentor", "11:05", "11:20"),
-		new schoolPeriod("Period 3", "11:20", "12:20"),
-		new schoolPeriod("Period 4", "12:25", "13:25"),
-		new schoolPeriod("House Assembly", "14:15", "15:15")
-	];
-
-	timetable[1][2] =
-	[
-		new schoolPeriod("Mentor", "8:30", "8:35"),
-		new schoolPeriod("Assembly", "8:35", "10:00"),
-		new schoolPeriod("Period 2", "10:00", "10:45"),
-		new schoolPeriod("Period 3", "11:10", "11:55"),
-		new schoolPeriod("Period 4", "12:00", "12:45"),
-		new schoolPeriod("Co-curricular", "13:30", "15:30")
-	];
-
-	timetable[1][4] =
-	[
-		new schoolPeriod("Assembly", "8:45", "10:15"),
-		new schoolPeriod("Period 2 (Yr 10 & 11)", "10:25", "11:10"),
-		new schoolPeriod("Period 3 (Yr 10 & 11)", "11:35", "12:20")
-	];
+	timetable[0][1] = periodsType1;
 
 	// Today
 	var today = new Date();
