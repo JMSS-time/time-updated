@@ -91,7 +91,7 @@ function calculateNextPeriod()
 	]];
 
 	//Temporary override for the timetable swap
-	timetable[0][1] = periodsType1;
+	timetable[1][4] = periodsType3;
 
 	// Today
 	var today = new Date();
