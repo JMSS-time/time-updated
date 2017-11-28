@@ -90,8 +90,17 @@ function calculateNextPeriod()
 	periodsType4,
 	]];
 
-	//Temporary override for the timetable swap
-	timetable[1][4] = periodsType3;
+	//Temporary override for the timetable chnage
+	timetable[1][2] =
+	[
+		new schoolPeriod("Period 1", "8:40", "9:05"),
+		new schoolPeriod("Period 2", "9:10", "9:35"),
+		new schoolPeriod("Period 3", "9:40", "10:05"),
+		new schoolPeriod("Period 4", "10:30", "10:55"),
+		new schoolPeriod("Period 5", "11:00", "11:25"),
+		new schoolPeriod("Period 6", "11:30", "11:55"),
+		new schoolPeriod("Assembly", "12:20", "13:00")
+	];
 
 	// Today
 	var today = new Date();
