@@ -73,6 +73,25 @@ function calculateNextPeriod()
 		new schoolPeriod("Period 5", "14:15", "15:15")
 	];
 
+	var monday2020 =
+	[
+		new schoolPeriod("Period 1", "8:40", "9:40"),
+		new schoolPeriod("Period 2", "9:40", "10:40"),
+		new schoolPeriod("Mentor", "11:05", "11:35"),
+		new schoolPeriod("Period 3", "11:35", "12:35"),
+		new schoolPeriod("Period 4", "12:40", "13:40"),
+		new schoolPeriod("Period 5", "14:30", "15:30")
+	];
+
+	var tuesday2020 =
+	[
+		new schoolPeriod("Period 1", "8:40", "9:40"),
+		new schoolPeriod("Period 2", "9:40", "10:40"),
+		new schoolPeriod("Period 3", "11:05", "12:05"),
+		new schoolPeriod("Period 4", "12:10", "13:10"),
+		new schoolPeriod("Period 5", "14:00", "15:00")
+	];
+
 	/*
 	// The timetable for two weeks
 	var timetable = [[
@@ -95,15 +114,15 @@ function calculateNextPeriod()
 	// Timetable override for orientation
 	var timetable = [[
 	// Week A
-	periodsType3,
-	periodsType3,
+	monday2020,
+	tuesday2020,
 	periodsType2,
 	periodsType3,
 	periodsType3,
 	],[
 	// Week B
-	periodsType3,
-	periodsType3,
+	monday2020,
+	tuesday2020,
 	periodsType2,
 	periodsType3,
 	periodsType3,
