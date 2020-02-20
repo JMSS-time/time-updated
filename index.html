@@ -107,6 +107,10 @@ $(document).ready(function(){
 	Cookies.set('alertClosed', 'true')
 	console.log(Cookies.get())
   });
+  $("#resetCookies").click(function(){
+	Cookies.remove('alertClosed')
+	alert("cookies reset!")
+  });
 });
 // todo: 
 // x add remembering the closing of the alert
@@ -117,7 +121,7 @@ $(document).ready(function(){
 	<div class="alert__element" id="alert">
 		<div class="alert__flex">
 			<div class="alert__element__text">
-				new timetable!
+				G'day! This website has been updated for the 2020 timetable!
 			</div>
 			<div class="icon__container" id="alertClose">
 				<span class="iconify alert__element__icon" data-icon="ion:close-circle" data-inline="false"></span>
@@ -140,7 +144,8 @@ $(document).ready(function(){
 	    <p class="w3-large w3-center" id="timeLabel"></p>
 	  </div>
 	  <div class="w3-display-bottomleft w3-padding-large">
-	    <a href="https://github.com/JMSS-time/time-updated/issues" target="_blank">Feedback</a>
+		<a href="https://github.com/JMSS-time/time-updated/issues" target="_blank">Feedback</a>
+		<a href="#" id="resetCookies">Reset Cookies</a>
 	  </div>
 	</div>
 	<div class="bgimg w3-display-container w3-animate-opacity w3-text-white" id="mainDiv">
