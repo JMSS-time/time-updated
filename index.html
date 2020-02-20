@@ -94,6 +94,10 @@ body, html {height: 100%}
   cursor: pointer;
 }
 .iconify { width: 1.5rem; height: 1.5rem; }
+.shadow{
+
+	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1), 1px 2px 4px rgba(0, 0, 0, 0.06);	
+}
 </style>
 <script>
 	console.log(Cookies.get())
@@ -139,9 +143,9 @@ $(document).ready(function(){
 	  <img src="./logo.png" alt="JMSS" style="width:50px;height:50px;">
 	  </div>
 	  <div class="w3-display-middle" style="width:300px">
-	    <h1 class="w3-jumbo w3-animate-top" id="timeLeft" style="text-align:center" ></h1>
+	    <h1 class="w3-jumbo w3-animate-top shadow" id="timeLeft" style="text-align:center" ></h1>
 	    <hr class="w3-border-grey" style="margin:auto;width:170px">
-	    <p class="w3-large w3-center" id="timeLabel"></p>
+	    <p class="w3-large w3-center shadow" id="timeLabel"></p>
 	  </div>
 	  <div class="w3-display-bottomleft w3-padding-large">
 		<a href="https://github.com/JMSS-time/time-updated/issues" target="_blank">Feedback</a>
