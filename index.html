@@ -100,6 +100,9 @@ body, html {height: 100%}
 }
 </style>
 <script>
+
+
+
 	console.log(Cookies.get())
 $(document).ready(function(){
 	if (Cookies.get('alertClosed')=="true"){
@@ -115,6 +118,7 @@ $(document).ready(function(){
 	Cookies.remove('alertClosed')
 	alert("cookies reset!")
   });
+  
 });
 // todo: 
 // x add remembering the closing of the alert

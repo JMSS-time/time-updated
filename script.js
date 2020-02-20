@@ -1,3 +1,18 @@
+var getUrlParameter = function getUrlParameter(sParam) {
+	var sPageURL = window.location.search.substring(1),
+		sURLVariables = sPageURL.split('&'),
+		sParameterName,
+		i;
+
+	for (i = 0; i < sURLVariables.length; i++) {
+		sParameterName = sURLVariables[i].split('=');
+
+		if (sParameterName[0] === sParam) {
+			return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+		}
+	}
+};
+
 $(document).ready(function()
 {
 	requestNotificationPermissions();
@@ -402,9 +417,16 @@ function setRandomBackgroundLoad()
 	// Set the background once the image has loaded
 	backImage.onload = function()
 	{
-		// Set the background
-		$("#mainDiv").css("background-image", "url("+backImage.src+")");
-
+		if(getUrlParameter("cimg")!=undefined){
+			var cImgUrl = getUrlParameter("cimg")
+			console.log("found cimg")
+			console.log(cImgUrl)
+			$("#mainDiv").css("background-image", "url("+cImgUrl+")");
+		} else{
+			// Set the background
+			$("#mainDiv").css("background-image", "url("+backImage.src+")");
+		}
+		
 		// Fade back in
 		$("#mainDiv").fadeIn(400);
 	};
