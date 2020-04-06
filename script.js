@@ -214,12 +214,13 @@ function calculateNextPeriod()
 		// Set the label accordingly
 		textLabel = "No periods left today";
 
-		// Clear the coutdown label
-		document.getElementById('timeLeft').innerHTML = "Relax";
-
+		// Clear the countdown label
+		//(´〜｀*) zzz
+		$('#clockElem[data-minutes]').html("zz");
+		$('#clockElem[data-seconds]').html("zz");
 		// Reset the title
-		document.getElementById('titleText').innerHTML = "Timetable";
-
+		//document.getElementById('titleText').innerHTML = "Timetable";
+		$("#titleText").html("Timetable")
 		// Tomorrow
 		tomorrow = new Date();
 		tomorrow.setHours(24);
@@ -240,7 +241,7 @@ function calculateNextPeriod()
 	}
 
 	// Set the label for the time
-	document.getElementById('timeLabel').innerHTML = textLabel;
+	$("#clockElem[data-subheading]").html(textLabel);
 
 	// Change the background
 	setRandomBackground();
@@ -261,19 +262,23 @@ function calculateTime(periodTime)
 	var m = Math.floor(timeLeft/60)%60;
 	var s = Math.floor(timeLeft%60);
 
+	// combine hours and minutes
+	m = m + (h*60)
 	// Make sure the numbers are always two digits
 	m = formatTime(m);
 	s = formatTime(s);
 
 	// Format the time
-	var timeFormatted = h + ":" + m + ":" + s;
+	//var timeFormatted = h + ":" + m + ":" + s;
 
 	// Display the countdown
-	document.getElementById('timeLeft').innerHTML = timeFormatted;
+	//document.getElementById('timeLeft').innerHTML = timeFormatted;
+	$("#clockElem[data-minutes]").html(`${m}`)
+	$("#clockElem[data-seconds]").html(`${s}`)
 
 	// Set the title to the countdown
-	document.getElementById('titleText').innerHTML = timeFormatted;
-
+	//document.getElementById('titleText').innerHTML = timeFormatted;
+	$("#titleText").html(`${m}m ${s}s`)
 	// Has the time been reached?
 	if (timeLeft > 0)
 	{
@@ -284,8 +289,9 @@ function calculateTime(periodTime)
 	else
 	{
 		// Get the label for the period
-		var timeLabel = document.getElementById('timeLabel').innerHTML;
-
+		//var timeLabel = document.getElementById('timeLabel').innerHTML;
+		var timeLabel = $("#clockElem[data-subheading]").html()
+		console.log(timeLabel)
 		// Extract the period name
 		var periodTitle = timeLabel.replace("Until ", "").replace(" starts", "").replace(" ends", "");
 
@@ -421,7 +427,7 @@ function setRandomBackgroundLoad()
 			var cImgUrl = getUrlParameter("cimg")
 			console.log("found cimg")
 			console.log(cImgUrl)
-			$("#mainDiv").css("background-image", "url("+cImgUrl+")");
+			$("#mainDiv").css("background-image", "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("+cImgUrl+")");
 		} else{
 			// Set the background
 			$("#mainDiv").css("background-image", "url("+backImage.src+")");
