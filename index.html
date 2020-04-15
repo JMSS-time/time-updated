@@ -105,13 +105,13 @@ body, html {height: 100%}
 }
 
 .clock-container{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 0.3fr;
-	gap: 1px 1px;
-	grid-template-areas: "minutes seconds" "subheading subheading";
-	
+text-align: center;
 }
+.clock-big{
+	display: flex;
+	justify-content: center;
+}
+
 
 #clockElem[data-minutes]{
 	grid-area: minutes;
@@ -203,13 +203,17 @@ $(document).ready(function(){
 	  <img src="./logo.png" alt="JMSS" style="width:50px;height:50px;" >
 	  </div>
 	  <div class="w3-display-middle">
+
 		<div class="clock-container">
-			<div id="clockElem" data-minutes>
+			<div class="clock-big">
+				<div id="clockElem" data-minutes>
 
+				</div>
+				<div id="clockElem" data-seconds>
+	
+				</div>
 			</div>
-			<div id="clockElem" data-seconds>
-
-			</div>
+			
 			<div id="clockElem" data-subheading>
 
 			</div>
