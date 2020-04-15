@@ -273,7 +273,7 @@ function calculateTime(periodTime)
 
 	// Display the countdown
 	//document.getElementById('timeLeft').innerHTML = timeFormatted;
-	$("#clockElem[data-minutes]").html(`${m}`)
+	$("#clockElem[data-minutes]").html(`${m}:`)
 	$("#clockElem[data-seconds]").html(`${s}`)
 
 	// Set the title to the countdown
