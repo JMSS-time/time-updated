@@ -434,7 +434,9 @@ function setRandomBackgroundLoad()
 			var cImgUrl = getUrlParameter("cimg")
 			console.log("found cimg")
 			console.log(cImgUrl)
-			$("#mainDiv").css("background-image", "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("+cImgUrl+")");
+			$("#mainDiv").css("filter", "brightness(0.55)");
+			//$("#mainDiv").css("box-shadow","inset 0 0 100px black")
+			$("#mainDiv").css("background-image", "url("+cImgUrl+")");
 		} else{
 			// Set the background
 			$("#mainDiv").css("background-image", "url("+backImage.src+")");
