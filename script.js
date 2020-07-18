@@ -150,7 +150,7 @@ function calculateNextPeriod()
 	var weekNumber = (new Date()).getWeek();
 
 	// Week number in a two week timetable
-	var week = (weekNumber%2) ? 0 : 1;
+	var week = (weekNumber%2) ? 1 : 0;
 
 	// Store periods in a day
 	var periods = [];
@@ -221,6 +221,9 @@ function calculateNextPeriod()
 		// Reset the title
 		//document.getElementById('titleText').innerHTML = "Timetable";
 		$("#titleText").html("Timetable")
+
+
+
 		// Tomorrow
 		tomorrow = new Date();
 		tomorrow.setHours(24);
@@ -242,7 +245,9 @@ function calculateNextPeriod()
 
 	// Set the label for the time
 	$("#clockElem[data-subheading]").html(textLabel);
-
+	// Display week indicator
+	$("#weekIndicator").html(`Week ${week ? 'A': 'B'}`)
+	$("#weekIndicator").attr("data-week",week ? 'A': 'B')
 	// Change the background
 	setRandomBackground();
 }
@@ -267,6 +272,8 @@ function calculateTime(periodTime)
 	// Make sure the numbers are always two digits
 	m = formatTime(m);
 	s = formatTime(s);
+
+	
 
 	// Format the time
 	//var timeFormatted = h + ":" + m + ":" + s;

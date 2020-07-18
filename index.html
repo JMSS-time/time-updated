@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#212121">
 
 <script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="./script.js"></script>
+<script type="text/javascript" src="./script.js?v=1"></script>
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap" rel="stylesheet">
 
 <style>
@@ -154,6 +154,30 @@ a:hover{
 	color: rgba(255,255,255,0.75);
 }
 
+
+.week-indicator{
+	position: fixed;
+	top:0em;
+	right: 0em;
+	color:#fff;
+	font-size: calc(1em + 1vw);
+	font-weight: 600;
+	margin:0px !important;
+	padding:0.2em;
+	padding-right: 1em;
+	padding-left: 1em;
+	text-shadow: 0px 0px 3px #0000;
+	line-height: 1;
+	background-color: #0000;
+}
+.week-indicator[data-week="A"]{
+	background-color: #0c8599;
+	text-shadow: 0px 0px 3px #0b7285;
+}
+.week-indicator[data-week="B"]{
+	background-color: #c2255c;
+	text-shadow: 0px 0px 3px #a61e4d;
+}
 </style>
 <script>
 
@@ -196,7 +220,7 @@ $(document).ready(function(){
 		
 	</div>
 </div>
-
+<div class="week-indicator z-max" id="weekIndicator" data-week="">Week</div>
 <div id="container" class="z-0">
 	<div class="bgimg w3-display-container w3-animate-opacity w3-text-white" id="timeDiv">
 	  <div class="w3-display-topleft w3-padding-large w3-xlarge">
