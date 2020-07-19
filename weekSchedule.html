@@ -129,6 +129,8 @@
         }*/
     </style>
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.4.1/dist/alpine.min.js" defer></script>
+    <script src="./digitalSchedule.js"></script>
     <script>
       Date.prototype.getWeek = function () {
         var onejan = new Date(this.getFullYear(), 0, 1);
@@ -149,7 +151,7 @@
     </script>
   </head>
   <body>
-    <div class="main">
+    <div class="main" x-data="{weeks: digitalSchedule}">
       <div class="v-stack">
         <div class="h-stack m-keep middle">
           <div class="v-stack"><a href="./">Go Back</a></div>
@@ -169,36 +171,19 @@
           <div class="spacer"></div>
         </div>
         <div class="h-stack">
-          <div class="view day">
-            <div class="day-top" data-week="A">Monday</div>
-            <div class="day-bottom" data-online="false">
-              <span class="iconify" data-icon="ic:sharp-school"></span>Onsite
+          <template x-for="(day,index) in weeks.A">
+            <div class="view day">
+              <div class="day-top" data-week="A" x-text="['Monday','Tuesday','Wednesday','Thursday','Friday'][index]">Monday</div>
+              <div class="day-bottom" data-online="false">
+                <span class="iconify" 
+                 x-bind:data-icon="day?'ic:sharp-wifi':'ic:sharp-school'"
+                 
+                 ></span><span x-text="day?'Online':'Onsite'"></span>
+              </div>
             </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="A">Tuesday</div>
-            <div class="day-bottom" data-online="true">
-              <span class="iconify" data-icon="ic:sharp-wifi"></span>Online
-            </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="A">Wednesday</div>
-            <div class="day-bottom" data-online="false">
-              <span class="iconify" data-icon="ic:sharp-school"></span>Onsite
-            </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="A">Thursday</div>
-            <div class="day-bottom" data-online="true">
-              <span class="iconify" data-icon="ic:sharp-wifi"></span>Online
-            </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="A">Friday</div>
-            <div class="day-bottom" data-online="false">
-              <span class="iconify" data-icon="ic:sharp-school"></span>Onsite
-            </div>
-          </div>
+          </template>
+          
+          
         </div>
       </div>
       <div class="v-stack week" data-week="B">
@@ -210,38 +195,22 @@
           <div class="spacer"></div>
         </div>
         <div class="h-stack">
-          <div class="view day">
-            <div class="day-top" data-week="B">Monday</div>
-            <div class="day-bottom" data-online="false">
-              <span class="iconify" data-icon="ic:sharp-school"></span>Onsite
+          <template x-for="(day,index) in weeks.B">
+            <div class="view day">
+              <div class="day-top" data-week="B" x-text="['Monday','Tuesday','Wednesday','Thursday','Friday'][index]">Monday</div>
+              <div class="day-bottom" data-online="false">
+                <span class="iconify" 
+                 x-bind:data-icon="day?'ic:sharp-wifi':'ic:sharp-school'"
+                 
+                 ></span><span x-text="day?'Online':'Onsite'"></span>
+              </div>
             </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="B">Tuesday</div>
-            <div class="day-bottom" data-online="false">
-              <span class="iconify" data-icon="ic:sharp-school"></span>Onsite
-            </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="B">Wednesday</div>
-            <div class="day-bottom" data-online="true">
-              <span class="iconify" data-icon="ic:sharp-wifi"></span>Online
-            </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="B">Thursday</div>
-            <div class="day-bottom" data-online="false">
-              <span class="iconify" data-icon="ic:sharp-school"></span>Onsite
-            </div>
-          </div>
-          <div class="view day">
-            <div class="day-top" data-week="B">Friday</div>
-            <div class="day-bottom" data-online="true">
-              <span class="iconify" data-icon="ic:sharp-wifi"></span>Online
-            </div>
-          </div>
+          </template>
+          
+          
         </div>
       </div>
+      
       <div class="spacer"></div>
       
     </div>
