@@ -187,11 +187,16 @@ a:hover{
 	console.log(Cookies.get())
 $(document).ready(function(){
 	if (Cookies.get('alertClosed')=="true"){
-		$( "#alert" ).fadeToggle( "fast")
+		$( "#alert" ).fadeToggle( "fast", function(){
+			$(".alert__container").remove()
+		})
+		
 	}
   $("#alertClose").click(function(){
     console.log("close button clicked");
-	$( "#alert" ).fadeToggle( "fast")
+	$( "#alert" ).fadeToggle( "fast", function(){
+			$(".alert__container").remove()
+		})
 	Cookies.set('alertClosed', 'true')
 	console.log(Cookies.get())
   });
