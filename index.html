@@ -13,7 +13,7 @@
 <link rel="manifest" href="./manifest.json">
 <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
 <meta name="theme-color" content="#212121">
-
+<script src="./digitalSchedule.js"></script>
 <script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="./script.js?v=1"></script>
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap" rel="stylesheet">
@@ -179,27 +179,17 @@ a:hover{
 	background-color: #c2255c;
 	text-shadow: 0px 0px 3px #a61e4d;
 }
+.day-indicator{
+	font-weight: 500;
+}
 </style>
+
 <script>
 
 
 
 	console.log(Cookies.get())
 $(document).ready(function(){
-	if (Cookies.get('alertClosed')=="true"){
-		$( "#alert" ).fadeToggle( "fast", function(){
-			$(".alert__container").remove()
-		})
-		
-	}
-  $("#alertClose").click(function(){
-    console.log("close button clicked");
-	$( "#alert" ).fadeToggle( "fast", function(){
-			$(".alert__container").remove()
-		})
-	Cookies.set('alertClosed', 'true')
-	console.log(Cookies.get())
-  });
   $("#resetCookies").click(function(){
 	Cookies.remove('alertClosed')
 	alert("cookies reset!")
@@ -211,7 +201,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body style="background-color:black">
-<div class="alert__container z-max w3-animate-top w3-animate-opacity">
+<!-- <div class="alert__container z-max w3-animate-top w3-animate-opacity">
 	<div class="alert__element" id="alert">
 		<div class="alert__flex">
 			<div class="alert__element__text">
@@ -225,9 +215,12 @@ $(document).ready(function(){
 		
 		
 	</div>
-</div>
+</div> -->
 <a href="./weekSchedule.html">
-	<div class="week-indicator z-9999" id="weekIndicator" data-week="">Week</div>
+	<div class="week-indicator z-9999"id="weekIndicator">
+		
+	</div>
+	
 </a>
 
 

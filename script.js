@@ -246,8 +246,15 @@ function calculateNextPeriod()
 	// Set the label for the time
 	$("#clockElem[data-subheading]").html(textLabel);
 	// Display week indicator
+	//var icon = `<span class="iconify" data-icon="${day?'ic:sharp-wifi':'ic:sharp-school'}"></span>`
 	$("#weekIndicator").html(`Week ${week ? 'A': 'B'}`)
 	$("#weekIndicator").attr("data-week",week ? 'A': 'B')
+	var weekLetter = week ? 'A': 'B'
+	/*$("#dayIndicator").html(`
+	<span class="iconify" 
+        data-icon="${digitalSchedule[weekLetter][today.getDay()-1]?'ic:sharp-wifi':'ic:sharp-school'}"
+    ></span><span>${digitalSchedule[weekLetter][today.getDay()-1]?'Online':'Onsite'} </span>
+	`)*/
 	// Change the background
 	setRandomBackground();
 }
