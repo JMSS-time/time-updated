@@ -400,14 +400,14 @@ var lastBackgroundIndex = -1;
 function setRandomBackgroundLoad()
 {
 	// The images to choose from
-	var images = ["./backgrounds/forestbridge.jpg",
-								"./backgrounds/landscape1.jpg",
-								"./backgrounds/landscape2.jpg",
-								"./backgrounds/landscape3.jpg",
-								"./backgrounds/landscape4.jpg",
-								"./backgrounds/landscape5.jpg",
-								"./backgrounds/landscape6.jpg",
-								"./backgrounds/landscape7.jpg"];
+	var images = [
+		"./backgrounds/autumnal-peach-preview.png",
+		"./backgrounds/bright-rain-preview.png",
+		"./backgrounds/glass-rainbow-preview.png",
+		"./backgrounds/good-vibes-preview.png",
+		"./backgrounds/moonrise-preview.png",
+		"./backgrounds/rose-thorn-preview.png",
+	];
 
 	// Select a random image
 	var newImageIndex = Math.floor(Math.random() * images.length);
