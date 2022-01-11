@@ -139,6 +139,31 @@ function calculateNextPeriod () {
   });
 }
 
+function setRandomBGImage () {
+  // check if a custom image is being used
+  const params = new URLSearchParams(window.location.search);
+  const cimg = params.get('cimg');
+
+  if (cimg !== undefined) {
+    document.body.style.backgroundImage = `url(${cimg})`;
+    return 0;
+  }
+
+  const images = [
+    './backgrounds/autumnal-peach-preview.png',
+    './backgrounds/bright-rain-preview.png',
+    './backgrounds/glass-rainbow-preview.png',
+    './backgrounds/good-vibes-preview.png',
+    './backgrounds/moonrise-preview.png',
+    './backgrounds/rose-thorn-preview.png'
+  ];
+
+  const imageIndex = Math.floor(Math.random() * images.length);
+  const imageURL = images[imageIndex];
+
+  document.body.style.backgroundImage = `url(${imageURL})`;
+}
 
 /* ACTUALLY RUN THE CODE */
 calculateNextPeriod();
+setRandomBGImage();
