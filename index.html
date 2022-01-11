@@ -61,7 +61,7 @@ body, html {height: 100%}
   top: 0;
   right: 0;
   left: 0;
-  max-width: 36rem;
+  max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
@@ -189,12 +189,19 @@ a:hover{
 
 
 
-	console.log(Cookies.get())
+	console.log(Cookies.get('alertClosed'))
 $(document).ready(function(){
+	if (Cookies.get('alertClosed') != 'true') {
+		$('#alert').css('display', 'block')
+	}
   $("#resetCookies").click(function(){
-	Cookies.remove('alertClosed')
-	alert("cookies reset!")
+		Cookies.remove('alertClosed')
+		alert("cookies reset!")
   });
+	$("#alertClose").click(function() {
+		Cookies.set('alertClosed', 'true')
+		$('#alert').fadeOut(170, () => { $('#alert').css('display', 'none') })
+	})
   
 });
 // todo: 
@@ -203,7 +210,7 @@ $(document).ready(function(){
 </head>
 <body style="background-color:black">
 <div class="alert__container z-max w3-animate-top w3-animate-opacity">
-	<div class="alert__element" id="alert">
+	<div class="alert__element" id="alert" style="display: none;">
 		<div class="alert__flex">
 			<div class="alert__element__text">
 				Psst... We're looking for someone to take over development of this site. <a href="https://github.com/jmss-time/time-updated/issues/new?title=I'd%20like%20to%20take%20over%20development%20for%20this%20project!&body=">Let us know if you'd be interested</a>.
