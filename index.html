@@ -14,8 +14,29 @@
 	<meta name="theme-color" content="#212121">
 
 	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 	
+	<div class="logo">
+		<img src="./jmss-logo-white-FINAL.svg" alt="JMSS">
+	</div>
+
+
+	<div id="clock" class="clock">
+		<div class="clock__time">
+			<span class="clock__time__mins" id="clockMins">&ndash;&ndash;</span>
+			<span class="clock__time__secs" id="clockSecs">&ndash;&ndash;</span>
+		</div>
+		<div class="clock__subheading" id="clockSubHeading">Loading...</div>
+	</div>
+
+	<div class="bottom-nav">
+		<a href="https://github.com/JMSS-time/time-updated/issues" target="_blank">Feedback</a>
+		<a href="#" id="resetCookies">Reset Cookies</a>
+		<a href="https://jmss-time.github.io/custom-image">Custom Image</a>
+	</div>
+
+	<script src="./script.js"></script>
 </body>
 </html>
