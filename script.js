@@ -144,7 +144,7 @@ function setRandomBGImage () {
   const params = new URLSearchParams(window.location.search);
   const cimg = params.get('cimg');
 
-  if (cimg !== undefined) {
+  if (cimg !== null) {
     document.body.style.backgroundImage = `url(${cimg})`;
     return 0;
   }
