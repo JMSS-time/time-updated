@@ -110,6 +110,7 @@ body {
 
 .bottom-nav > a {
   color: rgba(255, 255, 255, 1);
+  text-shadow: var(--shadow);
 }
 
 .bottom-nav > a:hover {
