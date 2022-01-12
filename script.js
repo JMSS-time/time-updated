@@ -188,7 +188,6 @@ function setRandomBGImage () {
   const images = [
     './backgrounds/autumnal-peach-preview.png',
     './backgrounds/bright-rain-preview.png',
-    './backgrounds/glass-rainbow-preview.png',
     './backgrounds/good-vibes-preview.png',
     './backgrounds/moonrise-preview.png',
     './backgrounds/rose-thorn-preview.png'
