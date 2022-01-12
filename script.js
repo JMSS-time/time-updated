@@ -40,66 +40,66 @@ function SchoolPeriod (title, startTime, endTime) {
 }
 
 const periods = {};
+const timetable = [];
+function initPeriods () {
+  // Mondays where there is an extended mentor
+  periods.extendedMentor = [
+    new SchoolPeriod('Period 1', '8:40', '9:40'),
+    new SchoolPeriod('Period 2', '9:40', '10:40'),
+    new SchoolPeriod('Mentor', '11:05', '11:35'),
+    new SchoolPeriod('Period 3', '11:35', '12:35'),
+    new SchoolPeriod('Period 4', '12:40', '13:40'),
+    new SchoolPeriod('Period 5', '14:30', '15:30')
+  ];
 
-// Mondays where there is an extended mentor
-periods.extendedMentor =
-[
-  new SchoolPeriod('Period 1', '8:40', '9:40'),
-  new SchoolPeriod('Period 2', '9:40', '10:40'),
-  new SchoolPeriod('Mentor', '11:05', '11:35'),
-  new SchoolPeriod('Period 3', '11:35', '12:35'),
-  new SchoolPeriod('Period 4', '12:40', '13:40'),
-  new SchoolPeriod('Period 5', '14:30', '15:30')
-];
+  // Tuesdays where this is no mentor
+  periods.noMentor = [
+    new SchoolPeriod('Period 1', '8:40', '9:40'),
+    new SchoolPeriod('Period 2', '9:40', '10:40'),
+    new SchoolPeriod('Period 3', '11:05', '12:05'),
+    new SchoolPeriod('Period 4', '12:10', '13:10'),
+    new SchoolPeriod('Period 5', '14:00', '15:00')
+  ];
 
-// Tuesdays where this is no mentor
-periods.noMentor =
-[
-  new SchoolPeriod('Period 1', '8:40', '9:40'),
-  new SchoolPeriod('Period 2', '9:40', '10:40'),
-  new SchoolPeriod('Period 3', '11:05', '12:05'),
-  new SchoolPeriod('Period 4', '12:10', '13:10'),
-  new SchoolPeriod('Period 5', '14:00', '15:00')
-];
+  // Wednesday with co curricular time
+  periods.coCurricular = [
+    new SchoolPeriod('Period 1', '8:40', '9:35'),
+    new SchoolPeriod('Period 2', '9:35', '10:30'),
+    new SchoolPeriod('Period 3', '10:55', '11:50'),
+    new SchoolPeriod('Period 4', '11:50', '12:45'),
+    new SchoolPeriod('Co-curricular', '13:30', '15:30')
+  ];
 
-// Wednesday with co curricular time
-periods.coCurricular =
-[
-  new SchoolPeriod('Period 1', '8:40', '9:35'),
-  new SchoolPeriod('Period 2', '9:35', '10:30'),
-  new SchoolPeriod('Period 3', '10:55', '11:50'),
-  new SchoolPeriod('Period 4', '11:50', '12:45'),
-  new SchoolPeriod('Co-curricular', '13:30', '15:30')
-];
+  // Thursday and Friday most days
+  periods.standard = [
+    new SchoolPeriod('Period 1', '8:40', '9:40'),
+    new SchoolPeriod('Period 2', '9:40', '10:40'),
+    new SchoolPeriod('Mentor', '11:05', '11:20'),
+    new SchoolPeriod('Period 3', '11:20', '12:20'),
+    new SchoolPeriod('Period 4', '12:25', '13:25'),
+    new SchoolPeriod('Period 5', '14:15', '15:15')
+  ];
 
-// Thursday and Friday most days
-periods.standard =
-[
-  new SchoolPeriod('Period 1', '8:40', '9:40'),
-  new SchoolPeriod('Period 2', '9:40', '10:40'),
-  new SchoolPeriod('Mentor', '11:05', '11:20'),
-  new SchoolPeriod('Period 3', '11:20', '12:20'),
-  new SchoolPeriod('Period 4', '12:25', '13:25'),
-  new SchoolPeriod('Period 5', '14:15', '15:15')
-];
-
-const timetable = [[
   // Week A
-  periods.extendedMentor,
-  periods.noMentor,
-  periods.coCurricular,
-  periods.standard,
-  periods.standard
-], [
-  // Week B
-  periods.extendedMentor,
-  periods.noMentor,
-  periods.coCurricular,
-  periods.standard,
-  periods.standard
-]];
+  timetable[0] = [
+    periods.extendedMentor,
+    periods.noMentor,
+    periods.coCurricular,
+    periods.standard,
+    periods.standard
+  ];
 
-function calculateNextPeriod () {
+  // Week B
+  timetable[1] = [
+    periods.extendedMentor,
+    periods.noMentor,
+    periods.coCurricular,
+    periods.standard,
+    periods.standard
+  ];
+}
+
+function updateClock () {
   // get today and corresponding timetable
   const today = new Date();
   const week = (getWeek(today) % 2) ? 1 : 0;
@@ -110,39 +110,64 @@ function calculateNextPeriod () {
     todaysPeriods = timetable[week][today.getDay() - 1];
   } else {
     setClock('––', '––', 'Relax, it\'s the weekend');
-    return 0;
+    return false;
   }
 
-  // search through today's periods to find the next one to the current time
-  let nextPeriod;
-  todaysPeriods.forEach((i, ix) => {
-    // console.log(i.title, i.startTime, i.endTime)
-    const iStartTime = i.startTime.getTime();
-    const iEndTime = i.endTime.getTime();
-    const todayTime = today.getTime();
+  /*
+    algorithm:
+      cull all periods already done from the list.
+      if first item is currently underway, then say period ends
+      if first item is about to start, then say period starts
+  */
 
-    if (iStartTime < todayTime && todayTime < iEndTime) {
-      // during a period
-      nextPeriod = todaysPeriods[ix + 1];
-      return 0;
-    } else if (todayTime < iStartTime) {
-      // before a period
-      nextPeriod = i;
-      return 0;
-    } else {
-      // neither, the day is over
-      setClock('––', '––', 'Relax, the day is over');
-
-      // check for periods tomorrow
-      const tomorrow = new Date();
-      tomorrow.setHours(24);
-      tomorrow.setMinutes(0);
-      tomorrow.setSeconds(0);
-      setTimeout(calculateNextPeriod, tomorrow - today);
-
-      return 0;
-    }
+  const todayTime = today.getTime();
+  const uncompletedTodaysPeriods = todaysPeriods.filter(i => {
+    // make sure that all periods left aren't completed
+    return todayTime < i.endTime.getTime();
   });
+
+  // empty list indicates the day is over
+  if (uncompletedTodaysPeriods.length === 0) {
+    setClock('––', '––', 'Relax, the day is over');
+
+    // check for periods later
+    const later = new Date();
+    later.setHours(24);
+    later.setMinutes(0);
+    later.setSeconds(0);
+    setTimeout(updateClock, later - today + 2000);
+    // reinits periods for the new day, but does that before it updates the clock
+    setTimeout(initPeriods, later - today + 1000);
+    return false;
+  }
+
+  // calculate seconds until and the message to display
+  const refPeriod = uncompletedTodaysPeriods[0];
+  let secondsUntil;
+  let subHeading;
+  if (todayTime < refPeriod.startTime.getTime()) {
+    // if the lesson is yet to start
+    secondsUntil = (refPeriod.startTime - today) / 1000;
+    subHeading = `Until ${refPeriod.title} starts`;
+  } else {
+    // if the lesson is about to end
+    secondsUntil = (refPeriod.endTime - today) / 1000;
+    subHeading = `Until ${refPeriod.title} ends`;
+  }
+
+  // convert to hours mins seconds
+  const h = Math.floor(secondsUntil / 3600);
+  let m = Math.floor(secondsUntil / 60) % 60;
+  let s = Math.floor(secondsUntil % 60);
+
+  // combine hours and minutes
+  m = m + (h * 60);
+  // Make sure the numbers are always two digits
+  m = String(m).padStart(2, '0');
+  s = String(s).padStart(2, '0');
+
+  setClock(`${m}:`, s, subHeading);
+  setTimeout(updateClock, 500);
 }
 
 function setRandomBGImage () {
@@ -152,7 +177,7 @@ function setRandomBGImage () {
 
   if (cimg !== null) {
     document.body.style.backgroundImage = `url(${cimg})`;
-    return 0;
+    return false;
   }
 
   const images = [
@@ -171,5 +196,6 @@ function setRandomBGImage () {
 }
 
 /* ACTUALLY RUN THE CODE */
-calculateNextPeriod();
+initPeriods();
+updateClock();
 setRandomBGImage();
