@@ -24,11 +24,8 @@ jobs:
       - uses: actions/checkout@v2
 
       # Job for Minify-JS
-      - name: Minify-JS Action
-        uses: jossydevers/minify-js@v1.0.0
-        with:
-          directory: 'script.js' # (OPTIONAL)
-          output: 'script.min.js' # (OPTIONAL)
+      - name: Minify
+        run: 'npm i -g minify && minify script.js > script.min.js'
           
       # Auto-commit to repository
       - uses: stefanzweifel/git-auto-commit-action@v4
