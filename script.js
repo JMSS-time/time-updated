@@ -8,6 +8,12 @@ function setClock (minutes, seconds, subHeading) {
   document.getElementById('clockMins').innerText = minutes;
   document.getElementById('clockSecs').innerText = seconds;
   document.getElementById('clockSubHeading').innerText = subHeading;
+
+  if (minutes === '––') {
+    document.getElementById('clockTime').ariaLabel = 'No time displayed';
+  } else {
+    document.getElementById('clockTime').ariaLabel = `${minutes} minutes and ${seconds} seconds left until the next period`;
+  }
 }
 
 // a class to contain info about a period
