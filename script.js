@@ -199,3 +199,17 @@ function setRandomBGImage () {
 initPeriods();
 updateClock();
 setRandomBGImage();
+
+// handles closing and hiding the alerts.
+// if you make a new alert just change the id and it will be pushed out.
+const alertElem = document.getElementById('alert');
+const alertId = alertElem.dataset.alertId;
+
+if (window.localStorage.getItem('isAlertClosed_' + alertId) !== 'true') {
+  alertElem.style.display = 'flex';
+}
+
+document.getElementById('alertClose').addEventListener('click', () => {
+  alertElem.style.display = 'none';
+  window.localStorage.setItem('isAlertClosed_' + alertId, true);
+});
