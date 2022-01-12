@@ -1,5 +1,6 @@
 :root {
   --mu: 8px;
+  --shadow: 1px 3px 3px rgba(0, 0, 0, 0.1), 1px 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
@@ -34,6 +35,47 @@ body {
   filter: drop-shadow(0px 0px 2px rgb(0 0 0 / 0.4));
 }
 
+.alert {
+  display: flex;
+  font-size: 0.9em;
+  position: fixed;
+  top: calc(var(--mu) * 2);
+  max-width: 42em;
+  text-align: center;
+  padding: var(--mu);
+  background-color: #fff;
+  color: #000;
+  box-shadow: var(--shadow);
+  border-radius: var(--mu);
+}
+
+.alert  a {
+  color: #000
+}
+.alert  a:hover {
+  color: rgba(0, 0, 0, 0.65);
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s
+}
+
+.alert button {
+  opacity: 0.75;
+  height: calc(var(--mu) * 4);
+  width: calc(var(--mu) * 4);
+  padding: 0px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin-left: calc(var(--mu) * 2);
+  cursor: pointer;
+}
+.alert button:hover {
+  color: rgba(0, 0, 0, 0.65);
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s
+}
+.alert button:active {
+  color: rgba(0, 0, 0, 0.50)
+}
+
 .bottom-nav {
   position: fixed;
   bottom: calc(var(--mu) * 2);
@@ -50,7 +92,7 @@ body {
 }
 
 .clock {
-  text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1), 1px 2px 4px rgba(0, 0, 0, 0.06);	
+  text-shadow: var(--shadow);	
   letter-spacing: -0.29px;
 }
 
