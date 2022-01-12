@@ -104,6 +104,10 @@ function updateClock () {
   const today = new Date();
   const week = (getWeek(today) % 2) ? 1 : 0;
 
+  const weekIndicatorElem = document.getElementById('weekIndicator');
+  weekIndicatorElem.innerText = `Week ${week ? 'A': 'B'}`;
+  weekIndicatorElem.setAttribute('data-week', week ? 'A': 'B');
+
   let todaysPeriods = [];
   // ignores weekends
   if (today.getDay() !== 6 || today.getDay() !== 0) {
@@ -166,6 +170,7 @@ function updateClock () {
   m = String(m).padStart(2, '0');
   s = String(s).padStart(2, '0');
 
+  // update display
   setClock(`${m}:`, s, subHeading);
   setTimeout(updateClock, 500);
 }
