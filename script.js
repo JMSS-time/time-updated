@@ -110,7 +110,7 @@ function updateClock () {
 
   let todaysPeriods = [];
   // ignores weekends
-  if (today.getDay() !== 6 || today.getDay() !== 0) {
+  if (today.getDay() !== 6 && today.getDay() !== 0) {
     todaysPeriods = timetable[week][today.getDay() - 1];
   } else {
     setClock('––', '––', 'Relax, it\'s the weekend');
