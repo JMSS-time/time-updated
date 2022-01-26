@@ -54,11 +54,12 @@ function initPeriods () {
 
   // Tuesdays where this is no mentor
   periods.noMentor = [
-    new SchoolPeriod('Period 1', '8:40', '9:40'),
-    new SchoolPeriod('Period 2', '9:40', '10:40'),
-    new SchoolPeriod('Period 3', '11:05', '12:05'),
-    new SchoolPeriod('Period 4', '12:10', '13:10'),
-    new SchoolPeriod('Period 5', '14:00', '15:00')
+    new SchoolPeriod('Period 1', '8:40', '9:35'),
+    new SchoolPeriod('Period 2', '9:35', '10:30'),
+    new SchoolPeriod('Period 3', '10:55', '11:50'),
+    new SchoolPeriod('Period 4', '11:55', '12:50'),
+    new SchoolPeriod('Period 5', '13:40', '14:35'),
+    new SchoolPeriod('Period 6', '14:35', '15:30')
   ];
 
   // Wednesday with co curricular time
