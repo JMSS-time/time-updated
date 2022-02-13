@@ -106,8 +106,8 @@ function updateClock () {
   const week = (getWeek(today) % 2) ? 1 : 0;
 
   const weekIndicatorElem = document.getElementById('weekIndicator');
-  weekIndicatorElem.innerText = `Week ${week ? 'A': 'B'}`;
-  weekIndicatorElem.setAttribute('data-week', week ? 'A': 'B');
+  weekIndicatorElem.innerText = `Week ${week ? 'A' : 'B'}`;
+  weekIndicatorElem.setAttribute('data-week', week ? 'A' : 'B');
 
   let todaysPeriods = [];
   // ignores weekends
