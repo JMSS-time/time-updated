@@ -1,6 +1,6 @@
 function getWeek (date) {
   const onejan = new Date(date.getFullYear(), 0, 1);
-  return Math.floor((((date - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+  return Math.ceil((((date - onejan) / 86400000) + onejan.getDay()) / 7);
 }
 
 // sets the clock information
@@ -81,13 +81,27 @@ function initPeriods () {
     new SchoolPeriod('Period 5', '14:15', '15:15')
   ];
 
+  //I'm sure you can guess
+  periods.AprilFools = [
+    new SchoolPeriod('English 3/4 Orals','8:00','9:35'),
+    new SchoolPeriod('Specialist 1/2 SAC','9:37','11:10'),
+    new SchoolPeriod('Methods 3/4 Quiz 2','11:12','12:30'),
+    new SchoolPeriod('Biology 3/4 SAC','12:30','12:35'),
+    new SchoolPeriod('Global Politics 3/4 SAC','12:37','12:39'),
+    new SchoolPeriod('Economics 1/2 test','12:50','13:30'),
+    new SchoolPeriod('Rescheduled lunch','13:30','14:00'),
+    new SchoolPeriod('French 1/2 SAC','14:00','14:15'),
+    new SchoolPeriod('the day','14:30','15:15'),
+    new SchoolPeriod('April fools!','15:15','23:59')
+  ]
+
   // Week A
   timetable[0] = [
     periods.extendedMentor,
     periods.noMentor,
     periods.coCurricular,
     periods.standard,
-    periods.standard
+    periods.AprilFools
   ];
 
   // Week B
@@ -106,7 +120,7 @@ function updateClock () {
   const week = (getWeek(today) % 2) ? 1 : 0;
 
   const weekIndicatorElem = document.getElementById('weekIndicator');
-  weekIndicatorElem.innerText = `Week ${week ? 'A' : 'B'}`;
+  weekIndicatorElem.innerText = `Week ${week ? 'B' : 'A'}`;
   weekIndicatorElem.setAttribute('data-week', week ? 'A' : 'B');
 
   let todaysPeriods = [];
@@ -191,7 +205,23 @@ function setRandomBGImage () {
     './backgrounds/bright-rain-preview.png',
     './backgrounds/good-vibes-preview.png',
     './backgrounds/moonrise-preview.png',
-    './backgrounds/rose-thorn-preview.png'
+    './backgrounds/rose-thorn-preview.png',
+    './backgrounds/autumnal-peach-preview.png',
+    './backgrounds/bright-rain-preview.png',
+    './backgrounds/good-vibes-preview.png',
+    './backgrounds/moonrise-preview.png',
+    './backgrounds/rose-thorn-preview.png',
+    './backgrounds/autumnal-peach-preview.png',
+    './backgrounds/bright-rain-preview.png',
+    './backgrounds/good-vibes-preview.png',
+    './backgrounds/moonrise-preview.png',
+    './backgrounds/rose-thorn-preview.png',
+    './backgrounds/autumnal-peach-preview.png',
+    './backgrounds/bright-rain-preview.png',
+    './backgrounds/good-vibes-preview.png',
+    './backgrounds/moonrise-preview.png',
+    './backgrounds/rose-thorn-preview.png',
+    './backgrounds/rickroll-preview.jfif'
   ];
 
   const imageIndex = Math.floor(Math.random() * images.length);
