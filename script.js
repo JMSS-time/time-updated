@@ -65,9 +65,9 @@ function initPeriods () {
   // Wednesday with co curricular time
   periods.coCurricular = [
     new SchoolPeriod('Period 1', '8:40', '9:35'),
-    new SchoolPeriod('Period 2', '9:35', '10:30'),
-    new SchoolPeriod('Period 3', '10:55', '11:50'),
-    new SchoolPeriod('Period 4', '11:50', '12:45'),
+    new SchoolPeriod('Period 2', '9:40', '10:40'),
+    new SchoolPeriod('Period 3', '11:00', '12:00'),
+    new SchoolPeriod('Period 4', '12:00', '13:00'),
     new SchoolPeriod('Co-curricular', '13:30', '15:30')
   ];
 
@@ -77,14 +77,14 @@ function initPeriods () {
     new SchoolPeriod('Period 2', '9:40', '10:40'),
     new SchoolPeriod('Mentor', '11:05', '11:20'),
     new SchoolPeriod('Period 3', '11:20', '12:20'),
-    new SchoolPeriod('Period 4', '12:25', '13:25'),
-    new SchoolPeriod('Period 5', '14:15', '15:15')
+    new SchoolPeriod('Period 4', '12:20, '13:20'),
+    new SchoolPeriod('Period 5', '14:20', '15:20')
   ];
 
   // Week A
   timetable[0] = [
-    periods.extendedMentor,
-    periods.noMentor,
+    periods.standard,
+    periods.standard,
     periods.coCurricular,
     periods.standard,
     periods.standard
@@ -92,8 +92,8 @@ function initPeriods () {
 
   // Week B
   timetable[1] = [
-    periods.extendedMentor,
-    periods.noMentor,
+    periods.standard,
+    periods.standard,
     periods.coCurricular,
     periods.standard,
     periods.standard
