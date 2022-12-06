@@ -51,7 +51,10 @@ function initPeriods () {
     new SchoolPeriod('Period 4', '12:40', '13:40'),
     new SchoolPeriod('Period 5', '14:30', '15:30')
   ];
-
+  //Holidays
+  periods.gohome = [
+    new SchoolPeriod('the holidays, please stop looking at this', '00:01','23:59')
+  ];
   // Tuesdays where this is no mentor
   periods.noMentor = [
     new SchoolPeriod('Period 1', '8:40', '9:35'),
@@ -83,20 +86,20 @@ function initPeriods () {
 
   // Week A
   timetable[0] = [
-    periods.standard,
-    periods.standard,
-    periods.coCurricular,
-    periods.standard,
-    periods.standard
+    periods.gohome,
+    periods.gohome,
+    periods.gohome,
+    periods.gohome,
+    periods.gohome
   ];
 
   // Week B
   timetable[1] = [
-    periods.standard,
-    periods.standard,
+    periods.gohome,
+    periods.gohome,
     periods.coCurricular,
-    periods.standard,
-    periods.standard
+    periods.gohome,
+    periods.gohome
   ];
 }
 
@@ -157,7 +160,7 @@ function updateClock () {
   } else {
     // if the lesson is about to end
     secondsUntil = (refPeriod.endTime - today) / 1000;
-    subHeading = `Until ${refPeriod.title} ends`;
+    subHeading = `Until the end of ${refPeriod.title}`;
   }
 
   // convert to hours mins seconds
