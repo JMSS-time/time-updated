@@ -55,13 +55,13 @@ function initPeriods () {
   periods.gohome = [
     new SchoolPeriod('the holidays, please stop looking at this', '00:01','23:59')
   ];
-  // Tuesdays where this is no mentor
-  periods.noMentor = [
-    new SchoolPeriod('Period 1', '8:40', '9:35'),
-    new SchoolPeriod('Period 2', '9:35', '10:30'),
-    new SchoolPeriod('Period 3', '10:55', '11:50'),
-    new SchoolPeriod('Period 4', '11:55', '12:50'),
-    new SchoolPeriod('Period 5', '13:40', '14:35'),
+  // Fridays with assembly
+  periods.assembly = [
+    new SchoolPeriod('Assembly', '8:30', '9:30'),
+    new SchoolPeriod('Period 2', '9:55', '10:55'),
+    new SchoolPeriod('Period 3', '11:20', '12:20'),
+    new SchoolPeriod('Period 4', '12:20', '13:20'),
+    new SchoolPeriod('Period 5', '14:20', '15:20'),
     new SchoolPeriod('Period 6', '14:35', '15:30')
   ];
 
@@ -71,10 +71,11 @@ function initPeriods () {
     new SchoolPeriod('Period 2', '9:40', '10:40'),
     new SchoolPeriod('Period 3', '11:00', '12:00'),
     new SchoolPeriod('Period 4', '12:00', '13:00'),
-    new SchoolPeriod('Co-curricular', '13:30', '15:30')
+    new SchoolPeriod('Co-curricular 1', '13:30', '14:30'),
+    new SchoolPeriod('Co-curricular 2', '14:30', '15:30')
   ];
 
-  // Thursday and Friday most days
+  // Monday, Tuesday, Thursday and every second Friday
   periods.standard = [
     new SchoolPeriod('Period 1', '8:40', '9:40'),
     new SchoolPeriod('Period 2', '9:40', '10:40'),
@@ -86,20 +87,20 @@ function initPeriods () {
 
   // Week A
   timetable[0] = [
-    periods.gohome,
-    periods.gohome,
-    periods.gohome,
-    periods.gohome,
-    periods.gohome
+    periods.standard,
+    periods.standard,
+    periods.coCurricular,
+    periods.standard,
+    periods.standard
   ];
 
   // Week B
   timetable[1] = [
-    periods.gohome,
-    periods.gohome,
+    periods.standard,
+    periods.standard,
     periods.coCurricular,
-    periods.gohome,
-    periods.gohome
+    periods.standard,
+    periods.assembly
   ];
 }
 
