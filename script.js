@@ -109,8 +109,11 @@ function updateClock () {
   const today = new Date();
   const week = (getWeek(today) % 2) ? 1 : 0;
 
+  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const day = weekdays[today.getDay()];
+
   const weekIndicatorElem = document.getElementById('weekIndicator');
-  weekIndicatorElem.innerText = `Week ${week ? 'A' : 'B'}`;
+  weekIndicatorElem.innerText = `${day}, Week ${week ? 'A' : 'B'}`;
   weekIndicatorElem.setAttribute('data-week', week ? 'A' : 'B');
 
   let todaysPeriods = [];
@@ -137,7 +140,7 @@ function updateClock () {
 
   // empty list indicates the day is over
   if (uncompletedTodaysPeriods.length === 0) {
-    setClock('––', '––', 'Relax, the day is over');
+    setClock('––', '––', `${(today.getDay() === 5) ? 'Relax, the week is over' : 'Relax, the day is over'}`);
 
     // check for periods later
     const later = new Date();
